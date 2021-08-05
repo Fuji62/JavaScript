@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="css/styles.css">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="js/script.js" charset="utf-8" defer></script>
+        <title>menu</title>
+    </head>
+    <body>
+        <header>
+            <h3>メニューを選択して計算ボタンを押してください</h3>
+        </header>
+        <main>
+            <dl>
+                <dt>ご　飯　150円</dt>
+                <dd>
+                    <label for="q11">普　通</label>
+                    <input type="radio" name="gohan" id="q11" value="150" checked>
+                    <label for="q12">大盛り(+50円)</label>
+                    <input type="radio" name="gohan" id="q12" value="200">
+                    <label for="q13">特盛り(+100円)</label>
+                    <input type="radio" name="gohan" id="q13" value="250">
+                </dd>
+                <dt>汁もの　100円</dt>
+                <dd>
+                    <label for="q21">みそ汁</label>
+                    <input type="radio" name="sirumono" id="q21" value="100" checked>
+                    <label for="q22">とん汁(+50円)</label>
+                    <input type="radio" name="sirumono" id="q22" value="150">
+                    <label for="q23">貝　汁(+90円)</label>
+                    <input type="radio" name="sirumono" id="q23" value="190">
+                </dd>
+                <dt>おかず　300円</dt>
+                <dd>
+                    <label for="q31">魚料理</label>
+                    <input type="radio" name="okazu" id="q31" value="300" checked>
+                    <label for="q32">肉料理(+100円)</label>
+                    <input type="radio" name="okazu" id="q32" value="400">
+                    <label for="q33">野菜料理(-30円)</label>
+                    <input type="radio" name="okazu" id="q33" value="270">
+                </dd>
+            </dl>
+            <button id="btn">計算</button>
+        </main>
+        <footer>
+            <span></span>
+        </footer>
+    </body>
+</html>
+
+---------------------------------------------------------------------------------
+
+$(function(){
+    'use strict';
+    $('#btn').click(function(){
+        let gohan = Number($('[name="gohan"]:checked').val());
+        let sirumono = Number($('[name="sirumono"]:checked').val());
+        let okazu = Number($('[name="okazu"]:checked').val());
+        //let gohan = Number($('#gohan').val());
+        //let sirumono = Number($('#sirumono').val());
+        //let okazu = Number($('#okazu').val());
+
+        let sum = gohan + sirumono + okazu;
+        $('span').text("合計：" + sum + "円");
+    });
+});
